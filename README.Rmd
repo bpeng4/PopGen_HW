@@ -89,7 +89,13 @@ while read SRR; do
 done < srr_list_hw1.txt
 ```
 
-### Download B73 V4 SRA files and Extract it
+### Download B73 V5 SRA files and Extract it
+```{bash eval=FALSE}
+wget https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0.fa.gz
+gunzip Zm-B73-REFERENCE-NAM-5.0.fa.gz
+```
+
+
 
 
 

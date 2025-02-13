@@ -453,11 +453,22 @@ SRR11119189
 SRR11119190
 EOF</code></pre>
 </div>
+<div id="loop-with-no-size-limit" class="section level3">
+<h3>Loop With No Size Limit</h3>
+<pre class="bash"><code>while read SRR; do
+    prefetch --max-size 0 $SRR  # Remove file size limit for all SRR numbers
+done &lt; srr_list_hw1.txt</code></pre>
+</div>
 <div id="download-sra-files-amd-extract-them" class="section level3">
 <h3>Download SRA files amd Extract Them</h3>
 <pre class="bash"><code>while read SRR; do
     fastq-dump --split-files --gzip $SRR
 done &lt; srr_list_hw1.txt</code></pre>
+</div>
+<div id="download-b73-v5-sra-files-and-extract-it" class="section level3">
+<h3>Download B73 V5 SRA files and Extract it</h3>
+<pre class="bash"><code>wget https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0.fa.gz
+gunzip Zm-B73-REFERENCE-NAM-5.0.fa.gz</code></pre>
 </div>
 </div>
 </div>
