@@ -75,6 +75,13 @@ SRR11119189
 SRR11119190
 EOF
 ```
+### Loop With No Size Limit
+```{bash eval=FALSE}
+while read SRR; do
+    prefetch --max-size 0 $SRR  # Remove file size limit for all SRR numbers
+done < srr_list_hw1.txt
+```
+
 ### Download SRA files amd Extract Them
 ```{bash eval=FALSE}
 while read SRR; do
@@ -82,7 +89,7 @@ while read SRR; do
 done < srr_list_hw1.txt
 ```
 
-
+### Download B73 V4 SRA files and Extract it
 
 
 
