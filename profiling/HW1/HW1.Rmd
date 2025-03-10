@@ -1,5 +1,10 @@
-#Bo Peng, 02/09/25, Homework1
+---
+title: "HW1"
+output: html_document
+date: "2025-02-09"
+name: Bo Peng
 
+---
 # Experimental Design and Methods
 
 ## Plant Materials and DNA Sequencing
