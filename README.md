@@ -91,6 +91,13 @@ while read SRR; do
 done < srr_list_hw1.txt
 ```
 
+### Unzip all the files
+```{bash eval=FALSE}
+for file in *.gz; do
+    gunzip -c "$file" > "${file%.gz}"
+done
+```
+
 ### Download B73 V5 SRA files and Extract it
 ```{bash eval=FALSE}
 wget https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0.fa.gz

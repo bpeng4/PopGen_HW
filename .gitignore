@@ -2,5 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< HEAD
 largedata
 
+=======
+largedata/
+slurm-script/log
+>>>>>>> 1424c1cf8012e6a7833d6ded9d29450e8158caa0
