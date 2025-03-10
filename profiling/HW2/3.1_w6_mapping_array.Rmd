@@ -1,0 +1,346 @@
+---
+title: "HW2"
+output: html_document
+date: "2025-03-10"
+name: Bo Peng
+
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+---
+
+# Syncing a fork (from the web UI)
+
+1. Click the __Fork__ button for the Git Repo `https://github.com/jyanglab/2025-agro932-lab`
+2. And then clone to your own system `git clone git@github.com:YOURID/2025-agro932-lab.git`
+
+
+### If you have __Forked__ it before:
+
+1. On GitHub, navigate to the main page of the forked repository that you want to sync with the upstream repository.
+2. Select the __Fetch upstream__ drop-down.
+3. Review the details about the commits from the upstream repository, then click __Fetch and merge__.
+4. [How to resolve a merge conflict](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github)
+
+---
+
+# Simulate NGS data
+
+### Install a software on HCC
+
+```{bash, eval=FALSE}
+cd $HOME
+mkdir bin
+# https://github.com/lh3/wgsim
+git clone https://github.com/lh3/wgsim.git
+
+# compilation
+gcc -g -O2 -Wall -o wgsim wgsim.c -lz -lm
+```
+
+### Put the software in your searching path
+
+```{bash, eval=FALSE}
+cd $HOME
+vi .bash_profile
+```
+
+Then copy the following to your `.bash_profile`
+
+```{bash, eval=FALSE}
+PATH=$PATH:~/bin/wgsim/
+```
+
+
+
+---
+
+# NGS data simulation using `wgsim`
+
+```
+Usage:   wgsim [options] <in.ref.fa> <out.read1.fq> <out.read2.fq>
+
+Options: -e FLOAT      base error rate [0.020]
+         -d INT        outer distance between the two ends [500]
+         -s INT        standard deviation [50]
+         -N INT        number of read pairs [1000000]
+         -1 INT        length of the first read [70]
+         -2 INT        length of the second read [70]
+         -r FLOAT      rate of mutations [0.0010]
+         -R FLOAT      fraction of indels [0.15]
+         -X FLOAT      probability an indel is extended [0.30]
+         -S INT        seed for random generator [-1]
+         -A FLOAT      disgard if the fraction of ambiguous 
+                       bases higher than FLOAT [0.05]
+         -h            haplotype mode
+```
+
+#### Type in the following command:
+
+```{bash, eval=FALSE}
+wgsim lambda.fa -e 0 -d 500 -N 5000 -1 100 -2 100 -r 0.01  \
+-R 0 -X 0 -S 1234567 -h l1.read1.fq l1.read2.fq
+```
+
+---
+
+# Reference genome
+
+## EnsemblPlants
+
+- Bread Wheat: [Triticum aestivum](https://plants.ensembl.org/Triticum_aestivum/Info/Index)
+- Common bean: [Phaseolus vulgaris](https://plants.ensembl.org/Phaseolus_vulgaris/Info/Index)
+- Domesticated sunflower: [Helianthus annuus](https://plants.ensembl.org/Helianthus_annuus/Info/Index)
+- Maize: [Zea mays](https://plants.ensembl.org/Zea_mays/Info/Index?db=core)
+- Soybean: [Glycine max](http://plants.ensembl.org/Glycine_max/Info/Index)
+- Sorghum: [Sorghumbase.org](https://ftp.sorghumbase.org/)
+
+--
+
+## Important info
+- Version: release-current (https://ftp.sorghumbase.org/release-current/fasta/sorghum_bicolorv5/)
+- Gene annotation: GFF3
+
+---
+
+# Download Reference from EnsemblPlants
+
+Maize [reference genome](https://plants.ensembl.org/Zea_mays/Info/Index)
+
+#### Change to `largedata\lab4` folder:
+
+```{bash, eval=FALSE}
+cd largedata
+mkdir sorghum
+cd sorghum
+```
+
+
+#### Then use `wget` to download the reference genome:
+
+```{bash, eval=FALSE}
+wget https://ftp.sorghumbase.org/release-current/fasta/sorghum_bicolorv5/dna/Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.dna.toplevel.fa.gz
+
+### then unzip it
+gunzip Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.dna.toplevel.fa.gz
+
+### then check the file with less
+less Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.dna.toplevel.fa | grep ">"
+
+# extracts the first 100k from chr1 of the genome 
+module load seqtk
+
+seqtk subseq Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.dna.toplevel.fa <(echo -e "1\t0\t100000") > chr1.fasta
+
+```
+
+`<(echo -e "1\t0\t100000")`: Specifies the chromosome (1) and range (1-100000).
+
+
+#### next step, let's get the GFF file
+
+```{bash, eval=FALSE}
+wget https://ftp.sorghumbase.org/release-current/gff3/sorghum_bicolorv5/Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.gff3.gz
+
+### then unzip it
+gunzip Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.gff3.gz
+
+### then check the file with less
+less Sorghum_bicolorv5.Sb-BTX623-REFERENCE-JGI-5.1.gff3
+
+```
+
+
+
+---
+
+# NGS data simulation using `wgsim`
+
+## simulate 20 individals x10 coverage
+
+```{bash, eval=FALSE}
+for i in {1..20}
+do
+   wgsim chr1.fasta -e 0 -d 500 -N 10000 -1 100 -2 100 -r 0.1 -S 123 -R 0 -X 0 -h l$i.read1.fq l$i.read2.fq
+done
+```
+
+--
+
+
+#### check how many reads
+
+```{bash, eval=FALSE}
+wc -l l1.read1.fq 
+# suppose to be 40000 lines = 10,000 reads
+```
+
+---
+
+# A procedure to calculate $\theta$ and $F_{ST}$ values
+
+### 1. Align the NGS reads to the reference genome
+  - [bwa](https://github.com/lh3/bwa)
+  - [samtools](https://github.com/samtools/samtools)
+
+
+### 2. Obtain the SNP calls 
+  - [bcftools](https://samtools.github.io/bcftools/bcftools.html)
+
+### 3. Calculate the Fst value for each site and visualize the results
+  - `R`
+
+---
+# A procedure to calculate $\theta$ and $F_{ST}$ values
+
+### 1. Align the NGS reads to the reference genome
+
+
+```{bash, eval=FALSE}
+module load bwa samtools bcftools
+# index the reference genome
+bwa index chr1.fasta
+```
+
+#### Do alignment for 10 individuals using bash loop:
+
+```{bash, eval=FALSE}
+# using bwa mem to align the reads to the reference genome 
+for i in {1..20}; do bwa mem chr1.fasta l$i.read1.fq l$i.read2.fq | samtools view -bSh - > l$i.bam; done
+# sort
+for i in *.bam; do samtools sort $i -o sorted_$i; done
+# index them
+for i in sorted*.bam; do samtools index $i; done
+```
+
+#### Check mapping statistics
+
+```{bash, eval=FALSE}
+samtools flagstat sorted_l1.bam
+```
+
+
+Let’s look at an example __slurm script header__ for a job called `theta` (which is run with script `theta.sh`).
+
+```{bash, eval=FALSE}
+#!/bin/bash -l
+#SBATCH -D ~projects/your-cool-project/
+#SBATCH -o ~/your-cool-project/slurm-log/steve-stdout-%j.txt
+#SBATCH -e ~/your-cool-project/slurm-log/steve-stderr-%j.txt
+#SBATCH -J steve
+#SBATCH -t 24:00:00
+set -e
+set -u
+
+# insert your script here
+```
+
+
+---
+
+## An Example Slurm Batch Script Header
+
+```{bash, eval=FALSE}
+#!/bin/bash -l
+#SBATCH -D ~/projects/your-cool-project/
+#SBATCH -o ~/your-cool-project/slurm-log/steve-stdout-%j.txt
+#SBATCH -e ~/your-cool-project/slurm-log/steve-stderr-%j.txt
+#SBATCH -J theta
+#SBATCH -t 24:00:00
+#SBATCH --mail-user=your_email_address@gmail.com
+#SBATCH --mail-type=END #email if ends
+#SBATCH --mail-type=FAIL #email if fails
+set -e
+set -u
+
+# insert your script here
+```
+
+- `D` sets your project directory.
+- `o` sets where standard output (of your batch script) goes.
+- `e` sets where standard error (of your batch script) goes.
+- `J` sets the job name.
+- `t` sets the time limit for the job, 24:00:00 indicates 24 hours.
+- `--mail`: will email you if the job is "END" or "FAIL"
+
+---
+
+## Let's do this in Rstudio on your labtop
+
+insert the following into a shell script, for example `sorghum_sim.sh`
+
+```{bash, eval=FALSE}
+# module load bwa samtools
+# cd largedata/lab4/
+
+# alignment
+for i in {1..20}; do bwa mem chr1.fasta l$i.read1.fq l$i.read2.fq | samtools view -bSh - > l$i.bam; done
+# sort
+for i in *.bam; do samtools sort $i -o sorted_$i; done
+# index them
+for i in sorted*.bam; do samtools index $i; done
+```
+
+--
+
+- submit the job via `sbatch`:
+
+```{bash, eval=FALSE}
+sbatch --licenses=common --ntasks=8 --mem=60G slurm-script/sorghum_sim.sh
+
+## check your job status
+squeue | grep "YOUR USER ID"
+```
+
+
+---
+
+## We can also submit a job array to run mapping in parallel
+
+```{bash}
+#!/bin/bash -l
+#SBATCH -D /mnt/nrdstor/jyanglab/jyang21/2025-agro932-lab
+#SBATCH -o /mnt/nrdstor/jyanglab/jyang21/2025-agro932-lab/slurm-log/stdout-%A_%a.txt
+#SBATCH -e /mnt/nrdstor/jyanglab/jyang21/2025-agro932-lab/slurm-log/stderr-%A_%a.txt
+#SBATCH -J mapping
+#SBATCH -t 2:00:00
+#SBATCH --array=1-20  # Define an array job from 1 to 20
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4  # Adjust based on available resources
+
+set -e
+set -u
+
+# Load required modules
+module load bwa samtools bcftools
+
+# Change to the working directory
+cd largedata/sorghum
+
+# Define sample ID from the SLURM array index
+SAMPLE_ID=$SLURM_ARRAY_TASK_ID
+
+# Run BWA alignment for the corresponding sample
+bwa mem chr1.fasta l${SAMPLE_ID}.read1.fq l${SAMPLE_ID}.read2.fq | samtools view -bSh - > l${SAMPLE_ID}.bam
+
+# Sort the BAM file
+samtools sort l${SAMPLE_ID}.bam -o sorted_l${SAMPLE_ID}.bam
+
+# Index the sorted BAM file
+samtools index sorted_l${SAMPLE_ID}.bam
+
+```
+
+
+submit job using the below code:
+
+```{bash, eval=FALSE}
+sbatch --licenses=common slurm-script/sorghum_array.sh
+```
+
+
+
+
+
+
