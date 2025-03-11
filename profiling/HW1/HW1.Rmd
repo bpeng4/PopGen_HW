@@ -1,10 +1,10 @@
 ---
 title: "HW1"
-output: html_document
+output: md_document
 date: "2025-02-09"
 name: Bo Peng
-
 ---
+
 # Experimental Design and Methods
 
 ## Plant Materials and DNA Sequencing
@@ -96,11 +96,25 @@ while read SRR; do
 done < srr_list_hw1.txt
 ```
 
+### Data and Data Processing Log Avaliable on HCC
+```{bash eval=FALSE}
+cd /work/agro932/bpeng4/PopGen_HW/largedata
+cd /work/agro932/bpeng4/PopGen_HW/log
+```
+
+### Unzip files
+```{bash eval=FALSE}
+for file in *.gz; do
+    gunzip -c "$file" > "${file%.gz}"
+done
+```
+
 ### Download B73 V5 SRA files and Extract it
 ```{bash eval=FALSE}
 wget https://download.maizegdb.org/Zm-B73-REFERENCE-NAM-5.0/Zm-B73-REFERENCE-NAM-5.0.fa.gz
 gunzip Zm-B73-REFERENCE-NAM-5.0.fa.gz
 ```
+
 
 
 
