@@ -5,8 +5,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=36
 #SBATCH -D /work/agro932/bpeng4/PopGen_HW
-#SBATCH -o /work/agro932/bpeng4/PopGen_HW/slurm-script/align-stdout-%j.txt
-#SBATCH -e /work/agro932/bpeng4/PopGen_HW/slurm-script/align-stderr-%j.txt
+#SBATCH -o /work/agro932/bpeng4/PopGen_HW/slurm-log/align-stdout-%j.txt
+#SBATCH -e /work/agro932/bpeng4/PopGen_HW/slurm-log/align-stderr-%j.txt
 #SBATCH -J Bwa_align
 #SBATCH --mail-user=bpeng4@huskers.unl.edu
 #SBATCH --mail-type=END #email if ends

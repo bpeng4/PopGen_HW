@@ -1,0 +1,1 @@
+index: the file is not BGZF compressed, cannot index: merged.bcf

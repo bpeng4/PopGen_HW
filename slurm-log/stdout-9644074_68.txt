@@ -1,0 +1,12 @@
+PLINK v1.90b4 64-bit (20 Mar 2017)             www.cog-genomics.org/plink/1.9/
+(C) 2005-2017 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to merged_variants.log.
+Options in effect:
+  --allow-extra-chr
+  --bcf merged_biallelic_snps.bcf
+  --make-bed
+  --out merged_variants
+
+257323 MB RAM detected; reserving 128661 MB for main workspace.
+--bcf: 1k variants complete.--bcf: 2k variants complete.--bcf: merged_variants-temporary.bed + merged_variants-temporary.bim +
+merged_variants-temporary.fam written.

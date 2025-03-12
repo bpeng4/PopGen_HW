@@ -1,0 +1,1 @@
+[E::main_vcfindex] the index file exists. Please use '-f' to overwrite merged.bcf.csi
