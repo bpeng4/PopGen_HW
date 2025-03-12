@@ -10,16 +10,13 @@ output:
   word_document: default
 ---
 
-
-# A procedure to calculate $\theta$ values
-
 ### 2. Obtain the SNP calls  with `samtools`
 
 ```{bash}
 #!/bin/bash -l
-#SBATCH -D /mnt/nrdstor/jyanglab/jyang21/2025-agro932-lab
-#SBATCH -o /mnt/nrdstor/jyanglab/jyang21/2025-agro932-lab/slurm-log/stdout-%A_%a.txt
-#SBATCH -e /mnt/nrdstor/jyanglab/jyang21/2025-agro932-lab/slurm-log/stderr-%A_%a.txt
+#SBATCH -D /work/agro932/bpeng4/PopGen_HW/
+#SBATCH -o /work/agro932/bpeng4/PopGen_HW/largedata/slurm-log/stdout-%A_%a.txt
+#SBATCH -e /work/agro932/bpeng4/PopGen_HW/largedata/slurm-log/stderr-%A_%a.txt
 #SBATCH -J SNP_calling
 #SBATCH -t 4:00:00
 #SBATCH --array=1-20  # Define an array job from 1 to 20
@@ -33,7 +30,7 @@ set -u
 module load samtools bcftools
 
 # Change to the working directory
-cd largedata/sorghum
+cd largedata
 
 # Define sample ID from the SLURM array index
 SAMPLE_ID=$SLURM_ARRAY_TASK_ID

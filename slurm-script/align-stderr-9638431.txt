@@ -1,0 +1,2 @@
+/var/spool/slurmd/job9638431/slurm_script: line 17: i_1: unbound variable
+[main_samview] fail to read the header from "-".
