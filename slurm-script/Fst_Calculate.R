@@ -25,37 +25,36 @@ for(i in 7:16){
 #### Compute p1, p2, p
 
 geno[geno == "."] <- NA
-```{r, eval=FALSE}
-geno$p <- apply(geno[, 25:64], 1, function(x) { sum(x==0)/(sum(x==1) + sum(x=0))})
-geno$p <- geno$p/10
 
-geno$p1 <- apply(geno[, 25:46], 1, function(x) {sum(as.numeric(as.character(x)))})
-geno$p1 <- geno$p1/6
+# Calculate overall allele frequency (p)
+geno$p <- apply(geno[, 17:36], 1, function(x) {
+  x <- as.numeric(as.character(x))  # Ensure numeric conversion
+  sum(x == 0) / length(x)           # Frequency of allele 0
+})
 
-geno$p2 <- apply(geno[, 47:64], 1, function(x) {sum(as.numeric(as.character(x)))})
-geno$p2 <- geno$p2/4
-```
-Then finally,
+# Calculate allele frequencies for two subpopulations
+geno$p1 <- apply(geno[, 17:26], 1, function(x) {
+  x <- as.numeric(as.character(x))
+  sum(x) / length(x)  # Frequency of allele 1
+})
 
-```{r, eval=FALSE}
-geno$fst <- with(geno, ((p1-p)^2 + (p2-p)^2)/(2*p*(1-p)) )
-```
+geno$p2 <- apply(geno[, 27:36], 1, function(x) {
+  x <- as.numeric(as.character(x))
+  sum(x) / length(x)  # Frequency of allele 1
+})
 
-Output the Fst results
+# Compute Fst using a standard formula
+geno$fst <- with(geno, ((p1 - p)^2 + (p2 - p)^2) / ((p1 * (1 - p1) + p2 * (1 - p2)) / 2))
+
+# Replace NaN or infinite values (in case of division by zero)
+geno$fst[is.na(geno$fst) | is.infinite(geno$fst)] <- 0
 
 
-```{r, eval=FALSE}
-write.table(geno, "cache/fst.csv", sep=",", row.names = FALSE, quote=FALSE)
-```
+#Output the Fst results
 
----
-# A procedure to calculate $\theta$ values
+write.table(geno, "/work/agro932/bpeng4/PopGen_HW/cache/fst.csv", sep=",", row.names = FALSE, quote=FALSE)
 
-### 3. Calculate the Fst value for each site and visualize the results
-
-#### Visualize the results on my local computer
-
-```{r, eval=FALSE}
-fst <- read.csv("cache/fst.csv")
+#### Visualize the results
+fst <- read.csv("/work/agro932/bpeng4/PopGen_HW/cache/fst.csv")
 
 plot(fst$pos, fst$fst, xlab="Physical position", ylab="Fst value", main="")
