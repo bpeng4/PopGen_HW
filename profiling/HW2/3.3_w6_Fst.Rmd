@@ -46,7 +46,7 @@ for(i in 5:24){
 
 geno[geno == "."] <- NA
 ```{r, eval=FALSE}
-geno$p <- apply(geno[, 25:64], 1, function(x) { sum(x==0)/(sum(x==1) + sum(x=0))})
+geno$p <- apply(geno[, 25:64], 1, function(x) { sum(x==0)/(sum(x==1) + sum(x==0))})
 geno$p <- geno$p/10
 
 geno$p1 <- apply(geno[, 25:46], 1, function(x) {sum(as.numeric(as.character(x)))})
