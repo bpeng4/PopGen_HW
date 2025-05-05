@@ -64,7 +64,7 @@ cp maize.thetasWindow5kb_1kb.pestPG /work/agro932/bpeng4/PopGen_HW/cache/
 
 ```{r,eval=F}
 library("data.table")
-d <- fread("cache/sorghum.thetasWindow5kb_1kb.pestPG", header=T, data.table=F)
+d <- fread("/Users/bopeng/Documents/GitHub/PopGen_HW/cache/maize.thetasWindow5kb_1kb.pestPG", header=T, data.table=F)
 
 pi=d$tP/d$nSites
 plot(d$tW/d$nSites,d$tP/d$nSites,xlab="Watterson Theta",ylab="Pairwise Theta",pch=16,col=adjustcolor("blue",alpha.f = 0.5))
