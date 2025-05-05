@@ -22,26 +22,31 @@ samtools faidx chr1.fasta
 
 # Step 2: Prepare BAM File List
 
-ls sorted*bam > bam_list.txt
+ls sorted_SRR11119156.bam sorted_SRR11119158.bam sorted_SRR11119163.bam sorted_SRR11119168.bam sorted_SRR11119169.bam  > bam_teosinte_list.txt
+ls sorted_SRR11119186.bam sorted_SRR11119187.bam sorted_SRR11119188.bam sorted_SRR11119189.bam sorted_SRR11119190.bam  > bam_landrace_list.txt
 
 
 # Step 3: Generate Site Frequency Spectrum (SFS)
 
-angsd -bam bam_list.txt  -doMaf 1 -doMajorMinor 1 -uniqueOnly 1 -minMapQ 30 -minQ 20 -minInd 6 -doSaf 1 -anc chr1.fasta -GL 2 -out maize -P 4
+angsd -bam bam_teosinte_list.txt  -doMaf 1 -doMajorMinor 1 -uniqueOnly 1 -minMapQ 30 -minQ 20 -minInd 5 -doSaf 1 -anc chr1.fasta -GL 2 -out teosinte -P 4
+angsd -bam bam_landrace_list.txt  -doMaf 1 -doMajorMinor 1 -uniqueOnly 1 -minMapQ 30 -minQ 20 -minInd 5 -doSaf 1 -anc chr1.fasta -GL 2 -out landrace -P 4
 
 
 # Step 4a: Estimate the SFS from SAF index
-realSFS maize.saf.idx -P 4 > maize.sfs
+realSFS teosinte.saf.idx -P 4 > teosinte.sfs
+realSFS landrace.saf.idx -P 4 > landrace.sfs
 
 # Step 4b: Compute theta using the SFS
-realSFS saf2theta maize.saf.idx -outname maize -sfs maize.sfs -fold 1 -P 4
+realSFS saf2theta teosinte.saf.idx -outname teosinte -sfs teosinte.sfs -fold 1 -P 4
+realSFS saf2theta landrace.saf.idx -outname landrace -sfs landrace.sfs -fold 1 -P 4
 
 
 # Step 5: Extract theta estimates using a 5 kb window size with a 1 kb step size.
 
-thetaStat do_stat maize.thetas.idx -win 5000 -step 1000 -outnames maize.thetasWindow5kb_1kb
-cp maize.thetasWindow5kb_1kb.pestPG /work/agro932/bpeng4/PopGen_HW/cache/
-
+thetaStat do_stat teosinte.thetas.idx -win 5000 -step 1000 -outnames teosinte.thetasWindow5kb_1kb
+thetaStat do_stat landrace.thetas.idx -win 5000 -step 1000 -outnames landrace.thetasWindow5kb_1kb
+cp teosinte.thetasWindow5kb_1kb.pestPG /work/agro932/bpeng4/PopGen_HW/cache/
+cp landrace.thetasWindow5kb_1kb.pestPG /work/agro932/bpeng4/PopGen_HW/cache/
 
 
 
