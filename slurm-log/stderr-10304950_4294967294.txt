@@ -1,0 +1,235 @@
+	-> angsd version: 0.937 (htslib: 1.15) build(Mar  3 2022 00:51:08)
+	-> angsd -bam bam_list.txt -doMaf 1 -doMajorMinor 1 -uniqueOnly 1 -minMapQ 30 -minQ 20 -minInd 6 -doSaf 1 -anc chr1.fasta -GL 2 -out maize -P 4 
+	-> Inputtype is BAM/CRAM
+[multiReader] 12 samples in 12 input files
+	-> Reading fasta: chr1.fasta
+	-> Parsing 12 number of samples 
+PROBS at: 1:1-100000	6363
+PROBS at: 1:1-100000	8828
+PROBS at: 1:1-100000	14524
+PROBS at: 1:1-100000	24306
+PROBS at: 1:1-100000	24816
+PROBS at: 1:1-100000	25337
+PROBS at: 1:1-100000	25866
+PROBS at: 1:1-100000	26192
+PROBS at: 1:1-100000	26357
+PROBS at: 1:1-100000	26644
+PROBS at: 1:1-100000	27071
+PROBS at: 1:1-100000	27099
+PROBS at: 1:1-100000	27124
+	-> Printing at chr: 1:1-100000 pos:31790 chunknumber 100 contains 964 sites
+
+	-> Allocated ~ 10 million nodes to the nodepool, this is not an estimate of the memory usage
+PROBS at: 1:1-100000	40896
+PROBS at: 1:1-100000	41115
+PROBS at: 1:1-100000	47886
+PROBS at: 1:1-100000	48295
+PROBS at: 1:1-100000	48324
+PROBS at: 1:1-100000	48836
+PROBS at: 1:1-100000	49057
+PROBS at: 1:1-100000	50609
+PROBS at: 1:1-100000	51102
+PROBS at: 1:1-100000	51156
+PROBS at: 1:1-100000	52008
+PROBS at: 1:1-100000	52040
+PROBS at: 1:1-100000	52176
+PROBS at: 1:1-100000	52561
+PROBS at: 1:1-100000	52691
+PROBS at: 1:1-100000	52782
+PROBS at: 1:1-100000	52803
+PROBS at: 1:1-100000	52875
+PROBS at: 1:1-100000	53301
+
+	-> Allocated ~ 20 million nodes to the nodepool, this is not an estimate of the memory usage
+PROBS at: 1:1-100000	53616
+PROBS at: 1:1-100000	53760
+PROBS at: 1:1-100000	53784
+PROBS at: 1:1-100000	54006
+PROBS at: 1:1-100000	54162
+PROBS at: 1:1-100000	54585
+PROBS at: 1:1-100000	54652
+PROBS at: 1:1-100000	55224
+PROBS at: 1:1-100000	55525
+PROBS at: 1:1-100000	55644
+PROBS at: 1:1-100000	55806
+PROBS at: 1:1-100000	56046
+PROBS at: 1:1-100000	56388
+PROBS at: 1:1-100000	56436
+PROBS at: 1:1-100000	56766
+PROBS at: 1:1-100000	56835
+PROBS at: 1:1-100000	57191
+PROBS at: 1:1-100000	57354
+PROBS at: 1:1-100000	57376
+PROBS at: 1:1-100000	57508
+PROBS at: 1:1-100000	57564
+PROBS at: 1:1-100000	57631
+PROBS at: 1:1-100000	57841
+PROBS at: 1:1-100000	58252
+PROBS at: 1:1-100000	58270
+PROBS at: 1:1-100000	58450
+PROBS at: 1:1-100000	58458
+PROBS at: 1:1-100000	58633
+PROBS at: 1:1-100000	58750
+PROBS at: 1:1-100000	58780
+PROBS at: 1:1-100000	58927
+PROBS at: 1:1-100000	58933
+PROBS at: 1:1-100000	59305
+PROBS at: 1:1-100000	59314
+PROBS at: 1:1-100000	59757
+PROBS at: 1:1-100000	59875
+PROBS at: 1:1-100000	60084
+PROBS at: 1:1-100000	60173
+PROBS at: 1:1-100000	60288
+PROBS at: 1:1-100000	60418
+PROBS at: 1:1-100000	60487
+PROBS at: 1:1-100000	60580
+PROBS at: 1:1-100000	60700
+PROBS at: 1:1-100000	60815
+PROBS at: 1:1-100000	61143
+PROBS at: 1:1-100000	61253
+PROBS at: 1:1-100000	61446
+PROBS at: 1:1-100000	61468
+PROBS at: 1:1-100000	61507
+PROBS at: 1:1-100000	61525
+PROBS at: 1:1-100000	61834
+PROBS at: 1:1-100000	61839
+
+	-> Allocated ~ 30 million nodes to the nodepool, this is not an estimate of the memory usage
+
+	-> Allocated ~ 40 million nodes to the nodepool, this is not an estimate of the memory usage
+PROBS at: 1:1-100000	61960
+PROBS at: 1:1-100000	62185
+PROBS at: 1:1-100000	62323
+PROBS at: 1:1-100000	62327
+PROBS at: 1:1-100000	63311
+PROBS at: 1:1-100000	63599
+PROBS at: 1:1-100000	63656
+PROBS at: 1:1-100000	63824
+PROBS at: 1:1-100000	64007
+PROBS at: 1:1-100000	64076
+PROBS at: 1:1-100000	64085
+PROBS at: 1:1-100000	64283
+PROBS at: 1:1-100000	64315
+PROBS at: 1:1-100000	64403
+PROBS at: 1:1-100000	64469
+PROBS at: 1:1-100000	64593
+PROBS at: 1:1-100000	65135
+PROBS at: 1:1-100000	65216
+PROBS at: 1:1-100000	65438
+PROBS at: 1:1-100000	65531
+PROBS at: 1:1-100000	65801
+PROBS at: 1:1-100000	65858
+PROBS at: 1:1-100000	66082
+PROBS at: 1:1-100000	66111
+PROBS at: 1:1-100000	66489
+PROBS at: 1:1-100000	66672
+PROBS at: 1:1-100000	66674
+PROBS at: 1:1-100000	66774
+PROBS at: 1:1-100000	66898
+	-> Printing at chr: 1:1-100000 pos:66974 chunknumber 200 contains 251 sites
+PROBS at: 1:1-100000	66997
+PROBS at: 1:1-100000	67263
+PROBS at: 1:1-100000	67299
+PROBS at: 1:1-100000	67699
+PROBS at: 1:1-100000	67758
+PROBS at: 1:1-100000	68126
+PROBS at: 1:1-100000	68160
+PROBS at: 1:1-100000	68193
+PROBS at: 1:1-100000	68514
+PROBS at: 1:1-100000	68718
+PROBS at: 1:1-100000	68864
+PROBS at: 1:1-100000	68979
+PROBS at: 1:1-100000	69307
+PROBS at: 1:1-100000	69893
+PROBS at: 1:1-100000	69979
+PROBS at: 1:1-100000	70105
+PROBS at: 1:1-100000	70625
+PROBS at: 1:1-100000	71049
+PROBS at: 1:1-100000	71447
+PROBS at: 1:1-100000	71639
+PROBS at: 1:1-100000	79464
+PROBS at: 1:1-100000	82547
+PROBS at: 1:1-100000	90327
+PROBS at: 1:1-100000	90382
+PROBS at: 1:1-100000	92753
+PROBS at: 1:1-100000	95264
+	-> Printing at chr: 1:1-100000 pos:96531 chunknumber 300 contains 251 sites
+
+	-> Done reading data waiting for calculations to finish
+	-> Done waiting for threads
+	-> Output filenames:
+		->"maize.arg"
+		->"maize.mafs.gz"
+		->"maize.saf.gz"
+		->"maize.saf.pos.gz"
+		->"maize.saf.idx"
+	-> Mon May  5 09:38:32 2025
+	-> Arguments and parameters for all analysis are located in .arg file
+	-> Total number of sites analyzed: 100000
+	-> Number of sites retained after filtering: 99097 
+	[ALL done] cpu-time used =  439.99 sec
+	[ALL done] walltime used =  349.00 sec
+	-> Version of fname:maize.saf.idx is:2
+	-> Assuming .saf.gz file: maize.saf.gz
+	-> Assuming .saf.pos.gz: maize.saf.pos.gz
+	-> args: tole:0.000000 nthreads:4 maxiter:100 nsites:0 start:(null) chr:(null) start:-1 stop:-1 fstout:(null) oldout:0 seed:-1 bootstrap:0 resample_chr:0 whichFst:0 fold:0 ref:(null) anc:(null)
+	-> generating offset remapper lookup
+	-> isSame:1 adjusting foldfactors
+	-> nSites: 98958
+	-> The choice of -nSites will require atleast: 10.192360 megabyte memory, that is at least: 0.00% of total memory
+	-> dim(maize.saf.idx):25
+	-> Dimension of parameter space: 25
+	-> Done reading data from chromosome will prepare next chromosome
+	-> Is in multi sfs, will now read data from chr:1:1-100000
+	-> hello Im the master merge part of realSFS. and I'll now do a tripple bypass to find intersect 
+	-> 1) Will set iter according to chooseChr and start and stop, and possibly using -sites
+	-> Will run optimization on nSites: 98958
+------------
+startlik=-298050.903450
+lik[2]=-63381.426142 diff=2.346695e+05 alpha:1.000000 sr2:5.362258e-01 nsites_difference[0]: 8.430558e+04
+lik[5]=-62905.931067 diff=4.754951e+02 alpha:1.331498 sr2:3.403350e-04 nsites_difference[0]: 1.806767e+03
+lik[8]=-62903.535777 diff=2.395290e+00 alpha:2.393433 sr2:2.717987e-07 nsites_difference[1]: 8.624470e+01
+lik[11]=-62903.532391 diff=3.386532e-03 alpha:1.991139 sr2:1.792548e-10 nsites_difference[5]: 1.850301e+00
+lik[14]=-62903.532313 diff=7.832194e-05 alpha:3.252817 sr2:2.090482e-12 nsites_difference[6]: 3.510984e-01
+lik[17]=-62903.532312 diff=4.805770e-08 alpha:1.290895 sr2:1.834470e-14 nsites_difference[0]: 1.336613e-02
+	-> New like is worse? new:-6.290353e+04 old:-6.290353e+04 diff:-3.259629e-09 will skip accelerated EM in this round
+lik[19]=-62903.532313 diff=6.737537e-09 alpha:3.797904 sr2:6.782205e-17 nsites_difference[5]: 8.942869e-04
+lik[21]=-62903.532312 diff=7.821654e-09 alpha:1.000000 sr2:2.029651e-17 nsites_difference[5]: 4.838702e-04
+	-> New like is worse? new:-6.290353e+04 old:-6.290353e+04 diff:-6.904884e-09 will skip accelerated EM in this round
+lik[23]=-62903.532313 diff=3.921741e-09 alpha:3.865950 sr2:6.122921e-18 nsites_difference[5]: 2.640723e-04
+lik[25]=-62903.532313 diff=7.275958e-11 alpha:1.000000 sr2:1.850475e-18 nsites_difference[5]: 1.446045e-04
+likelihood: -62903.532313
+------------
+	-> Only read nSites: 0 will therefore prepare next chromosome (or exit)
+
+	-> NB NB output is no longer log probs of the frequency spectrum!
+	-> Output is now simply the expected values! 
+	-> You can convert to the old format simply with log(norm(x))
+
+	-> Please check that it has converged!
+	-> You can add start new optimization by supplying -sfs FILE, where is >FILE from this run
+	-> -maxIter INT -tole FLOAT
+	-> Version of fname:maize.saf.idx is:2
+	-> Assuming .saf.gz file: maize.saf.gz
+	-> Assuming .saf.pos.gz: maize.saf.pos.gz
+	-> args: tole:0.000000 nthreads:4 maxiter:100 nsites:0 start:maize.sfs chr:(null) start:-1 stop:-1 fstout:maize oldout:0 seed:-1 bootstrap:0 resample_chr:0 whichFst:0 fold:1 ref:(null) anc:(null)
+	-> Will read chunks of size: 4096
+	-> Reading: maize.sfs assuming counts (will normalize to probs internally)
+	-> nChr:24
+	-> Done reading data from chromosome will prepare next chromosome
+	-> Is in multi sfs, will now read data from chr:1:1-100000
+	-> hello Im the master merge part of realSFS. and I'll now do a tripple bypass to find intersect 
+	-> 1) Will set iter according to chooseChr and start and stop, and possibly using -sites
+	-> Only read nSites: 0 will therefore prepare next chromosome (or exit)
+	-> Done reading data from chromosome will prepare next chromosome
+	-> Writing 98958 sites for chr:1:1-100000
+	-> Output filenames:
+		->"maize.thetas.gz"
+		->"maize.thetas.idx"
+ thetaStat do_stat maize.thetas.idx -win 5000 -step 1000 -outnames maize.thetasWindow5kb_1kb
+	Assuming binfile:maize.thetas.gz and indexfile:maize.thetas.idx
+		Information from index file:
+		0	1:1-100000	98958	8	24
+	 -r=(null) outnames=maize.thetasWindow5kb_1kb step: 1000 win: 5000
+	pc.chr=1:1-100000 pc.nSites=98958 firstpos=4 lastpos=99954
+	Dumping file: "maize.thetasWindow5kb_1kb.pestPG"

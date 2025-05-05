@@ -1,0 +1,134 @@
+---
+title: "Angsd and XP-CLR"
+author: "Jinliang Yang"
+date: "2025-03-13"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+---
+
+## Normalize the path:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+knitr::opts_knit$set(root.dir=normalizePath('../../')) 
+```
+
+
+# A procedure to detect linked selection
+
+#### Request a computation node
+
+```{bash,eval=F}
+srun --qos=short --nodes=1 --licenses=common --ntasks=1 --mem 6G --licenses=common --time 2:00:00 --pty bash
+```
+
+### Single read sampling approach for PCA---Corrects for unequal sequencing depth bias
+
+```{bash,eval=F}
+module load angsd/0.937
+angsd -bam bam_list.txt -minMapQ 30 -minQ 20 -GL 2  -doMajorMinor 1 -doMaf 1 -SNP_pval 2e-6 -doIBS 1 -doCounts 1 -doCov 1 -makeMatrix 1 -minMaf 0.05 -out sorghum -P 4
+# then copy results to cache
+```
+
+- plot PCA
+
+```{r}
+m <- as.matrix(read.table("cache/sorghum.covMat"))
+eig <- eigen(m)
+write.table(eig$vectors, "cache/eigenvectors.txt", row.names=FALSE, col.names=FALSE, quote=FALSE)
+write.table(eig$values, "cache/eigenvalues.txt", row.names=FALSE, col.names=FALSE, quote=FALSE)
+plot(eig$vectors[,1:2], lwd=2, xlab="PC 1",ylab="PC 2", main="Principal components", col="darkgreen",pch=16,las=1,cex=2)
+```
+
+## Powerful tools for population parameter calculation: [**Plink**](https://www.cog-genomics.org/plink/1.9/) and [**vcftools**](https://vcftools.github.io/man_latest.html)
+
+### Functions in plink
+- Prepare binary files for plink
+```{bash,eval=F}
+cd ../02vcf_files/
+gunzip -c TEO_LR_MZ_test.vcf.gz > TEO_LR_MZ_test.vcf
+module load plink
+plink --vcf TEO_LR_MZ_test.vcf --make-bed --out  TEO_LR_MZ_test
+```
+- Minor allele frequency
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --freq --out TEO_LR_MZ_test
+```
+- Missing data
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --missing --out TEO_LR_MZ_test
+```
+- Hardy-Weinberg equilibrium
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --hardy --out TEO_LR_MZ_test
+```
+- Homozygous genotype counts for each sample
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --het --out TEO_LR_MZ_test
+```
+- multiple parameters
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --freq --missing --hardy --het --out TEO_LR_MZ_test
+```
+
+- PCA
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --pca 10 --out TEO_LR_MZ_test
+```
+
+- Variant pruning
+
+```{bash,eval=F}
+plink --bfile TEO_LR_MZ_test --indep-pairwise 100 10 0.1 --out outfile
+plink --bfile TEO_LR_MZ_test --extract outfile.prune.in --make-bed --out prunedData
+```
+
+- bfiles to vcf
+```{bash,eval=F}
+plink --bfile prunedData --recode vcf --out prunedData
+```
+
+### Functions in Vcftools
+- Allele frequency from Chr5
+```{bash,eval=F}
+vcftools --gzvcf TEO_LR_MZ_test.vcf.gz --freq --chr 10 --out chr10_analysis
+```
+- Filtering according SNP missing rate or sample name
+```{bash,eval=F}
+vcftools --vcf TEO_LR_MZ_test.vcf --max-missing 0.7 --recode --out TEO_LR_MZ_test_miss03
+
+vcftools --vcf TEO_LR_MZ_test.vcf --keep maize.txt --recode --out maize
+```
+
+- Nucleotide diversity
+```{bash,eval=F}
+vcftools --vcf maize.recode.vcf --window-pi 25000 --window-pi-step 5000 --out MZ_test
+```
+- Fst estimate from Weir and Cockerham’s 1984 paper
+```{bash,eval=F}
+vcftools --vcf TEO_LR_MZ_test.vcf --weir-fst-pop teo.txt --weir-fst-pop maize.txt --fst-window-size 25000 --fst-window-step 5000 --out TEO_vs_MZ_w25k
+```
+- Small sample size and low allele frequency can casue negative fst, we can set them to 0
+```{bash,eval=F}
+awk '{if($5 < 0) $5=0; print}' TEO_vs_MZ_w25k.windowed.weir.fst > TEO_vs_MZ_w25k.windowed_fixed.fst
+```
+
+### Selection scan using [**XP-CLR**](https://github.com/hardingnj/xpclr)
+
+The original paper is [**here**](https://pubmed.ncbi.nlm.nih.gov/20086244/)
+
+```{bash,eval=F}
+module load xpclr/1.1 bcftools/1.21
+
+bcftools view -Ov -o merged.vcf merged.bcf
+
+xpclr --out xpclr_results --input merged.vcf --format vcf --samplesA maize.txt --samplesB teo.txt --chr 10 --ld 0.7 --start 98000000 --stop 105000000 --maxsnps 200 --minsnps 200 --size 25000 --step 5000
+```
+- Object is pop A. Reference is pop B
+- --out full path is needed
+
+
+
+

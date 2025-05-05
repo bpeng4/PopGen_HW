@@ -1,0 +1,182 @@
+	-> angsd version: 0.937 (htslib: 1.15) build(Mar  3 2022 00:51:08)
+	-> angsd -bam bam_list.txt -doMaf 1 -doMajorMinor 1 -uniqueOnly 1 -minMapQ 30 -minQ 20 -minInd 6 -doSaf 1 -anc chr1.fasta -GL 2 -out maize -P 4 
+	-> Inputtype is BAM/CRAM
+[multiReader] 12 samples in 12 input files
+	-> Reading fasta: chr1.fasta
+	-> Parsing 12 number of samples 
+PROBS at: 1:1-100000	6363
+PROBS at: 1:1-100000	8828
+PROBS at: 1:1-100000	14524
+PROBS at: 1:1-100000	24306
+PROBS at: 1:1-100000	24816
+PROBS at: 1:1-100000	25337
+PROBS at: 1:1-100000	25866
+PROBS at: 1:1-100000	26192
+PROBS at: 1:1-100000	26357
+PROBS at: 1:1-100000	26644
+PROBS at: 1:1-100000	27071
+PROBS at: 1:1-100000	27099
+PROBS at: 1:1-100000	27124
+	-> Printing at chr: 1:1-100000 pos:31790 chunknumber 100 contains 964 sites
+
+	-> Allocated ~ 10 million nodes to the nodepool, this is not an estimate of the memory usage
+PROBS at: 1:1-100000	40896
+PROBS at: 1:1-100000	41115
+PROBS at: 1:1-100000	47886
+PROBS at: 1:1-100000	48295
+PROBS at: 1:1-100000	48324
+PROBS at: 1:1-100000	48836
+PROBS at: 1:1-100000	49057
+PROBS at: 1:1-100000	50609
+PROBS at: 1:1-100000	51102
+PROBS at: 1:1-100000	51156
+PROBS at: 1:1-100000	52008
+PROBS at: 1:1-100000	52040
+PROBS at: 1:1-100000	52176
+PROBS at: 1:1-100000	52561
+PROBS at: 1:1-100000	52691
+PROBS at: 1:1-100000	52782
+PROBS at: 1:1-100000	52803
+PROBS at: 1:1-100000	52875
+PROBS at: 1:1-100000	53301
+
+	-> Allocated ~ 20 million nodes to the nodepool, this is not an estimate of the memory usage
+PROBS at: 1:1-100000	53616
+PROBS at: 1:1-100000	53760
+PROBS at: 1:1-100000	53784
+PROBS at: 1:1-100000	54006
+PROBS at: 1:1-100000	54162
+PROBS at: 1:1-100000	54585
+PROBS at: 1:1-100000	54652
+PROBS at: 1:1-100000	55224
+PROBS at: 1:1-100000	55525
+PROBS at: 1:1-100000	55644
+PROBS at: 1:1-100000	55806
+PROBS at: 1:1-100000	56046
+PROBS at: 1:1-100000	56388
+PROBS at: 1:1-100000	56436
+PROBS at: 1:1-100000	56766
+PROBS at: 1:1-100000	56835
+PROBS at: 1:1-100000	57191
+PROBS at: 1:1-100000	57354
+PROBS at: 1:1-100000	57376
+PROBS at: 1:1-100000	57508
+PROBS at: 1:1-100000	57564
+PROBS at: 1:1-100000	57631
+PROBS at: 1:1-100000	57841
+PROBS at: 1:1-100000	58252
+PROBS at: 1:1-100000	58270
+PROBS at: 1:1-100000	58450
+PROBS at: 1:1-100000	58458
+PROBS at: 1:1-100000	58633
+PROBS at: 1:1-100000	58750
+PROBS at: 1:1-100000	58780
+PROBS at: 1:1-100000	58927
+PROBS at: 1:1-100000	58933
+PROBS at: 1:1-100000	59305
+PROBS at: 1:1-100000	59314
+PROBS at: 1:1-100000	59757
+PROBS at: 1:1-100000	59875
+PROBS at: 1:1-100000	60084
+PROBS at: 1:1-100000	60173
+PROBS at: 1:1-100000	60288
+PROBS at: 1:1-100000	60418
+PROBS at: 1:1-100000	60487
+PROBS at: 1:1-100000	60580
+PROBS at: 1:1-100000	60700
+PROBS at: 1:1-100000	60815
+PROBS at: 1:1-100000	61143
+PROBS at: 1:1-100000	61253
+PROBS at: 1:1-100000	61446
+PROBS at: 1:1-100000	61468
+PROBS at: 1:1-100000	61507
+PROBS at: 1:1-100000	61525
+PROBS at: 1:1-100000	61834
+PROBS at: 1:1-100000	61839
+
+	-> Allocated ~ 30 million nodes to the nodepool, this is not an estimate of the memory usage
+
+	-> Allocated ~ 40 million nodes to the nodepool, this is not an estimate of the memory usage
+PROBS at: 1:1-100000	61960
+PROBS at: 1:1-100000	62185
+PROBS at: 1:1-100000	62323
+PROBS at: 1:1-100000	62327
+PROBS at: 1:1-100000	63311
+PROBS at: 1:1-100000	63599
+PROBS at: 1:1-100000	63656
+PROBS at: 1:1-100000	63824
+PROBS at: 1:1-100000	64007
+PROBS at: 1:1-100000	64076
+PROBS at: 1:1-100000	64085
+PROBS at: 1:1-100000	64283
+PROBS at: 1:1-100000	64315
+PROBS at: 1:1-100000	64403
+PROBS at: 1:1-100000	64469
+PROBS at: 1:1-100000	64593
+PROBS at: 1:1-100000	65135
+PROBS at: 1:1-100000	65216
+PROBS at: 1:1-100000	65438
+PROBS at: 1:1-100000	65531
+PROBS at: 1:1-100000	65801
+PROBS at: 1:1-100000	65858
+PROBS at: 1:1-100000	66082
+PROBS at: 1:1-100000	66111
+PROBS at: 1:1-100000	66489
+PROBS at: 1:1-100000	66672
+PROBS at: 1:1-100000	66674
+PROBS at: 1:1-100000	66774
+PROBS at: 1:1-100000	66898
+	-> Printing at chr: 1:1-100000 pos:66974 chunknumber 200 contains 251 sites
+PROBS at: 1:1-100000	66997
+PROBS at: 1:1-100000	67263
+PROBS at: 1:1-100000	67299
+PROBS at: 1:1-100000	67699
+PROBS at: 1:1-100000	67758
+PROBS at: 1:1-100000	68126
+PROBS at: 1:1-100000	68160
+PROBS at: 1:1-100000	68193
+PROBS at: 1:1-100000	68514
+PROBS at: 1:1-100000	68718
+PROBS at: 1:1-100000	68864
+PROBS at: 1:1-100000	68979
+PROBS at: 1:1-100000	69307
+PROBS at: 1:1-100000	69893
+PROBS at: 1:1-100000	69979
+PROBS at: 1:1-100000	70105
+PROBS at: 1:1-100000	70625
+PROBS at: 1:1-100000	71049
+PROBS at: 1:1-100000	71447
+PROBS at: 1:1-100000	71639
+PROBS at: 1:1-100000	79464
+PROBS at: 1:1-100000	82547
+PROBS at: 1:1-100000	90327
+PROBS at: 1:1-100000	90382
+PROBS at: 1:1-100000	92753
+PROBS at: 1:1-100000	95264
+	-> Printing at chr: 1:1-100000 pos:96531 chunknumber 300 contains 251 sites
+
+	-> Done reading data waiting for calculations to finish
+	-> Done waiting for threads
+	-> Output filenames:
+		->"maize.arg"
+		->"maize.mafs.gz"
+		->"maize.saf.gz"
+		->"maize.saf.pos.gz"
+		->"maize.saf.idx"
+	-> Sun May  4 23:07:01 2025
+	-> Arguments and parameters for all analysis are located in .arg file
+	-> Total number of sites analyzed: 100000
+	-> Number of sites retained after filtering: 99097 
+	[ALL done] cpu-time used =  434.51 sec
+	[ALL done] walltime used =  343.00 sec
+	-> Version of fname:maize.saf.idx is:2
+	-> Assuming .saf.gz file: maize.saf.gz
+	-> Assuming .saf.pos.gz: maize.saf.pos.gz
+	-> args: tole:0.000000 nthreads:4 maxiter:100 nsites:0 start:maize.sfs chr:(null) start:-1 stop:-1 fstout:maize oldout:0 seed:-1 bootstrap:0 resample_chr:0 whichFst:0 fold:1 ref:(null) anc:(null)
+	-> Will read chunks of size: 4096
+	-> Reading: maize.sfs assuming counts (will normalize to probs internally)
+problems opening file:maize.sfs
+ thetaStat do_stat maize.thetas.idx -win 5000 -step 1000 -outnames maize.thetasWindow5kb_1kb
+	Assuming binfile:maize.thetas.gz and indexfile:maize.thetas.idx
+	-> Problems opening file: 'maize.thetas.idx'
+cp: cannot stat 'maize.thetasWindow5kb_1kb.pestPG': No such file or directory
