@@ -69,15 +69,23 @@ cp landrace.thetasWindow5kb_1kb.pestPG /work/agro932/bpeng4/PopGen_HW/cache/
 
 ```{r,eval=F}
 library("data.table")
-d <- fread("/Users/bopeng/Documents/GitHub/PopGen_HW/cache/maize.thetasWindow5kb_1kb.pestPG", header=T, data.table=F)
+dland <- fread("/Users/bopeng/Documents/GitHub/PopGen_HW/cache/landrace.thetasWindow5kb_1kb.pestPG", header=T, data.table=F)
 
-pi=d$tP/d$nSites
-plot(d$tW/d$nSites,d$tP/d$nSites,xlab="Watterson Theta",ylab="Pairwise Theta",pch=16,col=adjustcolor("blue",alpha.f = 0.5))
-plot(d$WinCenter/1000, d$tP/d$nSites, xlab = "Chr1 (kp)", ylab="Pairwise Theta")
+pi=dland$tP/dland$nSites
+plot(dland$tW/dland$nSites,dland$tP/dland$nSites,xlab="Watterson Theta",ylab="Pairwise Theta", main="Landrace Chr1 100000bp",pch=16,col=adjustcolor("blue",alpha.f = 0.5))
+plot(dland$WinCenter/1000, dland$tP/dland$nSites, xlab = "Chr1 (kp)", ylab="Pairwise Theta", main="Landrace Chr1 100000bp")
+
+
+dteo<- fread("/Users/bopeng/Documents/GitHub/PopGen_HW/cache/teosinte.thetasWindow5kb_1kb.pestPG", header=T, data.table=F)
+
+pi=dteo$tP/dteo$nSites
+plot(dteo$tW/dteo$nSites,dteo$tP/dteo$nSites,xlab="Watterson Theta",ylab="Pairwise Theta", main="Teosinte Chr1 100000bp",pch=16,col=adjustcolor("blue",alpha.f = 0.5))
+plot(dteo$WinCenter/1000, dteo$tP/dteo$nSites, xlab = "Chr1 (kp)", ylab="Pairwise Theta", main="Teosinte Chr1 100000bp")
 ```
 
 ```{r}
-plot(d$WinCenter/1000, d$Tajima/d$nSites, xlab = "Chr1 (kp)", ylab="Tajima's D")
+plot(dland$WinCenter/1000, dland$Tajima/dland$nSites, xlab = "Chr1 (kp)", ylab="Landrace Tajima's D")
+plot(dteo$WinCenter/1000, dteo$Tajima/dteo$nSites, xlab = "Chr1 (kp)", ylab="Teosinte Tajima's D")
 ```
 
 ### an example about how to interpret the results in text
